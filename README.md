@@ -20,8 +20,26 @@ Ciasteczka i token CSRF są zahardkodowane w skrypcie. Gdy sesja wygaśnie, usta
 COOKIE="..." CSRF_TOKEN="..." node index.js
 ```
 
+## Powiadomienia SMS (JustSend)
+
+Przy **zmianie** wolnych miejsc (nowy sektor lub inna liczba) skrypt może wysłać SMS przez [JustSend API v3](https://justsend.pl/static/files/justsend-api-v3.pdf).
+
+Zmienne środowiskowe:
+
+- **`JUSTSEND_APP_KEY`** – klucz API z panelu JustSend (nagłówek `appKey`).
+- **`NOTIFY_PHONES`** – numery do powiadomień, po przecinku, np. `48123456789,48500100200`.
+
+Przykład:
+
+```bash
+JUSTSEND_APP_KEY=twój_klucz NOTIFY_PHONES=48123456789 node index.js
+```
+
+SMS jest wysyłany tylko gdy pojawi się zmiana (nie przy każdym pollu z tym samym stanem).
+
 ## Zachowanie
 
 - Co **1 minutę** zapytanie GET do API stadionu (mecz PLAL26).
-- W logach tylko sektory z `available_seats > 0`.
+- W logach tylko sektory z wolnymi miejscami przy **zmianie** (bez dublowania).
 - Przy braku wolnych miejsc: komunikat „Brak wolnych miejsc”.
+- Gdy jest ustawione `JUSTSEND_APP_KEY` i `NOTIFY_PHONES` – wysyłka SMS przy zmianie.

@@ -4,5 +4,8 @@
   "description": "Lightweight checker for available sectors on bilety.laczynaspilka.pl",
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
   }
 }

@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+build/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Prisma
+# (migrations w repo – nie ignoruj prisma/migrations)
+
+# misc
+*.tsbuildinfo
+coverage/
+.nyc_output/
